@@ -1,5 +1,15 @@
 # Omnicalc Debug
 
+## Target
+
+Here is your target:
+
+[https://omnicalc-debug.matchthetarget.com/](https://omnicalc-debug.matchthetarget.com/)
+
+Click through your application and try to find the bugs in it; try to make your application match the target.
+
+Use `rails grade` to confirm that you found them all.
+
 ## Standard Workflow
 
  1. Start the web server by running `bin/server`.
