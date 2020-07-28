@@ -108,7 +108,7 @@ describe "/calendar_invite/new" do
     calendar_form = find("form")
     action_attribute = calendar_form[:action]
 
-    expect(action_attribute).to eq("/calendar_invite/resutls")
+    expect(action_attribute).to eq("/calendar_invite/results")
 
   end
 end
