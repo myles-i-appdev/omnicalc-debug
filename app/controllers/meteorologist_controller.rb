@@ -1,7 +1,7 @@
 class MeteorologistController < ApplicationController
   def street_to_weather
-    @street_address = params.fetch("address")
-    
+    @street_address = params.fetch("street_address")
+
     maps_key = ENV.fetch("GEOCODING_API_KEY")
 
     url = "https://maps.googleapis.com/maps/api/geocode/json?key=" +  maps_key + "&address=" + @street_address
@@ -17,10 +17,10 @@ class MeteorologistController < ApplicationController
 
     @lng = location.fetch("lng").to_s
 
-    dark_sky_key = ENV.fetch("DARK_SKY_KEY")
+    dark_sky_key = ENV.fetch("DARKSKY_API_KEY")
 
     api_url = "https://api.darksky.net/forecast/"+ dark_sky_key + "/" + @lat + "," +  @lng
-    
+
     api_response = open(api_url).read
     results = JSON.parse(api_response)
 
@@ -28,7 +28,7 @@ class MeteorologistController < ApplicationController
     @current_temperature = currently_data.fetch("temperature")
 
     @current_summary = currently_data.fetch("summary")
-    
+
     if results.has_key?("minutely")
       @summary_of_next_sixty_minutes = results.fetch("minutely").fetch("summary")
     else

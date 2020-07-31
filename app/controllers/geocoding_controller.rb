@@ -1,8 +1,8 @@
 class GeocodingController < ApplicationController
 
   def street_to_coords
-    @street_address = params.fetch("user_street_input")
-    
+    @street_address = params.fetch("street_address")
+
     maps_key = ENV.fetch("GEOCODING_API_KEY")
 
     url = "https://maps.googleapis.com/maps/api/geocode/json?key=" +  maps_key + "&address=" + @street_address

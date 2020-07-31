@@ -3,10 +3,10 @@ class ForecastController < ApplicationController
     @lat = params.fetch("user_latitude")
     @lng = params.fetch("user_longitude")
 
-    key = ENV.fetch("DARK_SKY_KEY")
+    key = ENV.fetch("DARKSKY_API_KEY")
 
     api_url = "https://api.darksky.net/forecast/"+ key + "/" + @lat + "," +  @lng
-    
+
     api_response = open(api_url).read
     results = JSON.parse(api_response)
 
@@ -31,5 +31,5 @@ class ForecastController < ApplicationController
   def coords_to_weather_form
     render({ :template => "forecast_templates/coords_to_weather_form.html.erb"})
   end
-  
+
 end
